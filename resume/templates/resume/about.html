@@ -1,0 +1,212 @@
+{% extends "resume/base2.html" %}
+
+{% block content %}
+
+<section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
+    <h1>ABOUT <span>ME</span></h1>
+    <span class="title-bg">Resume</span>
+</section>
+<!-- Page Title Ends -->
+<!-- Main Content Starts -->
+<section class="main-content revealator-slideup revealator-once revealator-delay1">
+    <div class="container">
+        <div class="row">
+            <!-- Personal Info Starts -->
+            <div class="col-12 col-lg-5 col-xl-8">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
+                    </div>
+                    <div class="col-12 d-block d-sm-none">
+                        <img src={{homel.profile.url}} class="img-fluid main-img-mobile" alt="my picture" />
+                    </div>
+                    <div class="col-6">
+                        <ul class="about-list list-unstyled open-sans-font">
+                            <li> <span class="title">First name :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.FirstName}}</span> </li>
+                            <li> <span class="title">Last name :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.LastName}}</span> </li>
+                            <li> <span class="title">Age :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Age}}</span> </li>
+                            <li> <span class="title">Nationality :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Nationality}}</span> </li>
+                            <li> <span class="title">Freelance :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Freelance}}</span> </li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="about-list list-unstyled open-sans-font">
+                            <li> <span class="title">Address :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Address}}</span> </li>
+                            <li> <span class="title">phone :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Phone}}</span> </li>
+                            <li> <span class="title">Email :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Email}}</span> </li>
+                            <li> <span class="title"><a href="https://www.linkedin.com/in/ilmaan-zia-8872ab1a3/?originalSubdomain=in">Linkedin</a> :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Linkedin}}</span> </li>
+                            <li> <span class="title"><a href="https://github.com/ilmaan">Github</a> :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{resume.Github}}</span> </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <a href={{pdf.file.url}} download class="btn btn-download">Download CV</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Personal Info Ends -->
+            <!-- Boxes Starts -->
+            <div class="col-12 col-lg-7 col-xl-4 mt-5 mt-lg-0">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="box-stats with-margin">
+                            <h3 class="poppins-font position-relative">{{keys.No1}}</h3>
+                            <p class="open-sans-font m-0 position-relative text-uppercase">{{keys.Dsc1}} <span class="d-block"></span>{{keys.Dsc}} </span></p>
+                        </div><br>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="box-stats with-margin">
+                            <h3 class="poppins-font position-relative">{{keys.No2}}</h3>
+                            <p class="open-sans-font m-0 position-relative text-uppercase"> {{keys.Dsc2}}</span></p>
+                        </div><br>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="box-stats">
+                            <h3 class="poppins-font position-relative">{{keys.No3}}</h3>
+                            <p class="open-sans-font m-0 position-relative text-uppercase">{{keys.Dsc3}}</span></p>
+                        </div><br>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="box-stats">
+                            <h3 class="poppins-font position-relative">{{keys.No4}}</h3>
+                            <p class="open-sans-font m-0 position-relative text-uppercase">{{keys.Dsc4}}</span></p>
+                        </div><br>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Boxes Ends -->
+        </div>
+        <hr class="separator">
+        <!-- Skills Starts -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">My Skills</h3>
+            </div>
+            <div class="col-12">
+                <h5 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">Programming Skills</h5>
+            </div>
+
+            {% for lan in language %}
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p{{lan.value}}">
+                    <span>{{lan.value}}%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">{{lan.skilset}}</h6>
+            </div>
+            {% endfor %}
+
+            <div class="col-12">
+                <h4 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">Web Development</h4>
+            </div>
+
+            <div class="col-12">
+                <h5 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">FrameWork</h5>
+            </div>
+
+            {% for frm in framework %}
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p{{frm.value}}">
+                    <span>{{frm.value}}%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">{{frm.skilset}}</h6>
+            </div>
+            {% endfor %}
+
+            <div class="col-12">
+                <h5 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">Front-End & Back-End </h5>
+            </div>
+
+            {% for fb in frontback %}
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p{{fb.value}}">
+                    <span>{{fb.value}}%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">{{fb.skilset}}</h6>
+            </div>
+            {% endfor %}
+
+            <div class="col-12">
+                <h5 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">Database</h5>
+            </div>
+
+            {% for db in database %}
+            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                <div class="c100 p{{db.value}}">
+                    <span>{{db.value}}%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">{{db.skilset}}</h6>
+            </div>
+            {% endfor %}
+
+
+
+
+
+        </div>
+        <!-- Skills Ends -->
+        <hr class="separator mt-1">
+        <!-- Experience & Education Starts -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-uppercase pb-5 mb-0 text-left text-sm-center custom-title ft-wt-600">Experience <span>&</span> Education</h3>
+            </div>
+            <div class="col-lg-6 m-15px-tb">
+                <div class="resume-box">
+                    <ul>
+                        {% for we in experience %}
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">{{we.Time}}</span>
+                            <h5 class="poppins-font text-uppercase">{{we.Title}}<span class="place open-sans-font"></span></h5>
+                            <p class="open-sans-font">{{we.Dsc}}</p>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 m-15px-tb">
+                <div class="resume-box">
+                    <ul>
+                        {% for ed in education %}
+                        <li>
+                            <div class="icon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <span class="time open-sans-font text-uppercase">{{ed.Time}}</span>
+                            <h5 class="poppins-font text-uppercase">{{ed.Title}} <span class="place open-sans-font"> </span></h5>
+                            <p class="open-sans-font">{{ed.Dsc}}</p>
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Experience & Education Ends -->
+    </div>
+</section>
+<!-- Main Content Ends -->
+
+{% endblock content %}

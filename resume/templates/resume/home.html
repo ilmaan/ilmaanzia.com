@@ -1,0 +1,194 @@
+{% extends 'resume/base.html' %}
+
+    {% block content %}
+
+    <style>
+
+
+        .imagp{
+            border-radius: 20px;
+            height: 658px;
+            width: 440px;
+            margin-left: -18px;
+        }
+
+
+        .image-area
+        {
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+
+        }
+
+        .img-wrapper
+        {
+            width: 400px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-wrapper:before
+        {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 180%;
+            height: 100%;
+            width: 100%;
+            background: rgba(255,255,255,.3);
+            z-index: 1;
+            transform: skew(45deg);
+            transition: .5s;
+        }
+
+        .img-wrapper:hover:before
+        {
+            left: -180%;
+        }
+
+        .img-wrapper img
+        {
+            height: 400px;
+            width: 300px;
+            filter: grayscale(100%);
+            transition: 2s;
+        }
+        .img-wrapper:hover img
+        {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .img-wrapper h2
+        {
+            background: black;
+            font-family: Poppins;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transform: perspective(400px) rotateY(90deg);
+            transform-origin: right;
+            transition: 1s;
+        }
+
+        .img-wrapper:hover h2
+        {
+            transform: perspective(400px) rotateY(0deg);
+        }
+
+        .img-wrapper ul
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: rgba(255,255,255,0);
+        }
+
+        .img-wrapper ul li
+        {
+            background: #333;
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            line-height: 40px;
+            transform: perspective(800px) rotateY(90deg);
+            transition: .5s;
+            transform-origin: left;
+        }
+
+        .img-wrapper:hover ul li
+        {
+            transform: perspective(800px) rotateY(0deg);
+        }
+
+        .img-wrapper:hover ul li:nth-child(1)
+        {
+            transition-delay: .2s;
+        }
+
+        .img-wrapper:hover ul li:nth-child(2)
+        {
+            transition-delay: .6s;
+        }
+
+        .img-wrapper:hover ul li:nth-child(3)
+        {
+            transition-delay: .8s;
+        }
+
+        .img-wrapper:hover ul li:nth-child(4)
+        {
+            transition-delay: 1s;
+        }
+
+        .img-wrapper ul li a
+        {
+            color: goldenrod;
+            background: rgba(255,255,255,0);
+        }
+
+        .img-wrapper ul li i
+        {
+            color: goldenrod;
+            background: rgba(255,255,255,0);
+        }
+
+        .img-wrapper ul li i:hover
+        {
+            color: #fff;
+            background: rgba(255,255,255,0);
+        }
+            </style>
+
+
+
+
+
+    <section class="container-fluid main-container container-home p-0 revealator-slideup revealator-once revealator-delay1">
+        <div class="color-block d-none d-lg-block"></div>
+        <div class="row home-details-container align-items-center">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+
+            <div class="image-area">
+                <div class="img-wrapper">
+                    <img src="{{homel.profile.url}}">
+                    <h2>ILMAAN ZIA</h2>
+                    <ul>
+                        <li><a href="https://github.com/ilmaan"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.instagram.com/ilmaanzia"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://in.linkedin.com/in/ilmaan-zia-8872ab1a3"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC-zDO1rHak3LftaEuyx_xGg"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-12 col-lg-8 offset-lg-4 home-details text-left text-sm-center text-lg-left">
+                <div>
+
+                    <h6 class="text-uppercase open-sans-font mb-0 d-block d-sm-none d-lg-block"> HEY THERE !</h6>
+                    <h1 class="text-uppercase poppins-font"><span>I'm</span> {{homel.Name}}</h1>
+                    <p class="open-sans-font">{{homel.About}}</p>
+                    <a href="/about" class="btn btn-about">more about me</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    {% endblock content %}
