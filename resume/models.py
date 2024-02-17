@@ -1,16 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from datetime import datetime
 
 # Create your models here.
 
 class Resume(models.Model):
     FirstName = models.CharField(max_length=30)
     LastName = models.CharField(max_length=30)
-    Age = models.CharField(max_length=30)
-    Nationality = models.CharField(max_length=30)
+    Age = models.IntegerField(max_length=30)
+    Location = models.CharField(max_length=30)
     Freelance = models.CharField(max_length=30, default='Available')
-    Address = models.CharField(max_length=30)
+    Address = models.CharField(max_length=300)
     Phone = models.CharField(max_length=14)
     Email = models.CharField(max_length=30)
     Linkedin = models.CharField(max_length=50)
@@ -18,6 +19,8 @@ class Resume(models.Model):
     Languages = models.CharField(max_length=30)
     def __str__(self):
         return self.FirstName
+    # nAge = int(Age)
+    # age = ((datetime.now() - nAge).days / 365.25  )
 
 
 class Pdf(models.Model):
@@ -91,16 +94,19 @@ class Database(models.Model):
         return self.skilset
 
 class Experience(models.Model):
-    Time = models.CharField(max_length=20)
-    Title = models.CharField(max_length=40)
-    Dsc = models.CharField(max_length=40)
+    id = models.IntegerField(primary_key=True)
+    Time = models.CharField(max_length=200)
+    Title = models.CharField(max_length=400)
+    Dsc = models.CharField(max_length=4000)
     def __str__(self):
         return self.Title
 
 class Education(models.Model):
-    Time = models.CharField(max_length=20)
-    Title = models.CharField(max_length=40)
-    Dsc = models.CharField(max_length=40)
+    id = models.IntegerField(primary_key=True)
+    Time = models.CharField(max_length=200)
+    Title = models.CharField(max_length=400)
+    Dsc = models.CharField(max_length=4000)
     def __str__(self):
         return self.Title
+
 

@@ -7,4 +7,5 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('blog/', PostListView.as_view(), name='blog'),
     path('form/', views.form, name='form'),
+    path('vcard/', views.vcard, name='vcard'),
 ]
