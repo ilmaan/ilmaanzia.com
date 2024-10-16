@@ -51,22 +51,20 @@ if (formName) {
 }
 
 if (formSubmitBtn && resendMessage) {
+    console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
     formSubmitBtn.addEventListener('click', (e) => {
         e.preventDefault();
         resendMessage = false;
 
-        if (!rechaptcha) {
-            document.getElementById('recaptcha').style.display = 'block';
-            document.getElementById('recaptcha-error').innerHTML = `<small class="error-text"><i class="fa fa-exclamation-triangle"></i> Oops, you have to check the recaptcha !</small>`;
-            resendMessage = true;
-        } else {
-            document.getElementById('recaptcha-error').innerHTML = ``;
+        
+            // document.getElementById('recaptcha-error').innerHTML = ``;
             // Build formData object.
             let formData = new FormData();
             formData.append('name', formName.value);
             formData.append('email', formEmail.value);
             formData.append('message', formMessage.value);
-            formData.append('rechaptcha', rechaptcha);
+            // formData.append('rechaptcha', rechaptcha);
+            console.log("HELLOOOO",formName,formEmail,formMessage)
     
             fetch("/",
                 {

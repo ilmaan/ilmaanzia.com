@@ -18,9 +18,11 @@
                 </div>
                 <!-- <img src={{info.avatar.url}} class="profile-pic" alt="Not found"> -->
                 <label for="profile-pic">
-                    <div class="profile-pic shadow" style="background-image: url('{% if info.avatar %}{{info.avatar.url}}{% else %}{% static 'img/default-avatar.svg' %}{% endif %}')">
+                    <div class="profile-pic shadow" style="background-image: url({{info.avatar.url}})">
+                        <!-- <img src="{{info.avatar.url}}" class="profile-pic shadow" alt=""> -->
+                        <!-- <div class="profile-pic shadow"  style="background-image: url({{info.avatar.url}});"></div>
                         <i class="fa fa-camera change-pic" ></i>
-                        <span>Change Image</span>
+                        <span>Change Image</span> -->
                     </div>
                 </label>
 

@@ -56,6 +56,23 @@ hr {
     /* border-bottom: #17D778 solid 2px; */
 }
 
+.profile-pic{
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+
 .nav-text {
     color: var(--color);
     font-size: 15px;
@@ -158,8 +175,8 @@ hr {
 
 .scroll__down {
     position: absolute;
-    top: 100%;
-    bottom: -44px;
+    /* top: 100%; */
+    /* bottom: -44px; */
     left: 50%;
     display: inline-block;
     width: auto;
@@ -168,6 +185,7 @@ hr {
     background-color: transparent;
     border: none;
     transform: translate(-50%, -50%);
+    margin-top: 25px;
 }
 .scroll__down:active {
     border: none;
@@ -227,6 +245,8 @@ hr {
     color: var(--color);
     font-size: 14px;
     font-weight: 300;
+    height: 150px;
+    overflow: auto;
 }
 
 .competence-card {
@@ -241,7 +261,7 @@ hr {
     transform: scale(1.08);
 }
 .competence-img {
-    width: 72px; 
+    width: 40px; 
     /* height: 35px; */
     object-fit: fill;
 }
