@@ -6,7 +6,7 @@
         <div class="row pt-lg-4 justify-content-center">
             <div class="col-12 text-center">
                 <h1 class="display-3 title m-0">Projects</h1>
-                <p class="s-color">Hey, on this page you will find all of my projects.</p>
+                <p class="s-color">Hey, on this page you will find all of my projects and research works.</p>
             </div>
 
             <div class="col-lg-8">
@@ -25,7 +25,7 @@
         <hr class="mt-2 mb-4 ">
 
 
-        <div class="row" id="projectsContainer">
+        <div class="row" style="display: ruby;" id="projectsContainer">
             {% for project in projects %}
                 <div class="col-lg-4 mb-4 ">
                     <a href="{{project.get_project_absolute_url}}">

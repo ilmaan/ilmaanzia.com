@@ -4,7 +4,7 @@ from django.core import serializers
 
 import json
 from django.db.models import Q
-from decouple import config
+# from decouple import config
 
 from django.core.mail import send_mail
 from django.conf import settings
@@ -16,7 +16,8 @@ from info.models import (
     Experience,
     Project,
     Information,
-    Message
+    Message,
+    Research
 )
 
 
@@ -33,54 +34,81 @@ def email_send(data):
 
 
 def homePage(request):
-    template_name = 'homePage.html'
-    context = {}
+    try:
+        template_name = 'homePage.html'
+        context = {}
 
-    if request.method == 'POST':
-        if request.POST.get('rechaptcha', None):
-            form = MessageForm(request.POST)
-            if form.is_valid():
-                form.save(commit=False)
-                data = {
-                    'name': request.POST['name'],
-                    'email': request.POST['email'],
-                    'message': request.POST['message']
-                }
-                if email_send(data):
-                    form.save()
+        if request.method == 'POST':
+            if request.POST.get('rechaptcha', None) or 1==1:
+                form = MessageForm(request.POST)
+                if form.is_valid():
+                    form.save(commit=False)
+                    data = {
+                        'name': request.POST['name'],
+                        'email': request.POST['email'],
+                        'message': request.POST['message']
+                    }
+                    if email_send(data):
+                        form.save()
 
-                return JsonResponse({'success': True})
-            else:
-                return JsonResponse({'success': False, 'errors': form.errors})
-        return JsonResponse({'success': False, 'errors': "Oops, you have to check the recaptcha !"})
+                    return JsonResponse({'success': True})
+                else:
+                    return JsonResponse({'success': False, 'errors': form.errors})
+            return JsonResponse({'success': False, 'errors': "Oops, you have to check the recaptcha !"})
 
-    if request.method == 'GET':
-        form = MessageForm()
-        competences = Competence.objects.all().order_by('id')
-        education = Education.objects.all().order_by('-id')
-        experiences = Experience.objects.all().order_by('-id')
-        projects = Project.objects.filter(show_in_slider=True).order_by('-id')
-        info = Information.objects.first()
-        context = {
-            'info': info,
-            'competences': competences,
-            'education': education,
-            'experiences': experiences,
-            'projects': projects,
-            'form': form,
-            'recaptcha_key': config("recaptcha_site_key", default="")
-        }
-    return render(request, template_name, context)
+        if request.method == 'GET':
+            form = MessageForm()
+            competences = Competence.objects.all().order_by('id')
+            education = Education.objects.all().order_by('-id')
+            experiences = Experience.objects.all().order_by('-id')
+            projects = Project.objects.filter(show_in_slider=True).order_by('-id')
+            researchs = Research.objects.filter(show_in_slider=True).order_by('-id')
+            info = Information.objects.first()
+            context = {
+                'info': info,
+                'competences': competences,
+                'education': education,
+                'experiences': experiences,
+                'projects': projects,
+                'projects': projects,
+                'form': form,
+                'researchs': researchs,
+                # 'recaptcha_key': config("recaptcha_site_key", default="")
+            }
+            # print("PROJWCTS",projects[0].image)
+        return render(request, template_name, context)
+    except Exception as e:
+        print("EXCEPTION OCCOURED",e)
 
 
 def projectsPage(request):
-    template_name = 'projects/projects_page.html'
-    if request.method == 'GET':
-        projects = Project.objects.all().order_by('-id')
-        context = {
-            'projects': projects
-        }
-        return render(request, template_name, context)
+    try:
+
+        template_name = 'projects/projects_page.html'
+        if request.method == 'GET':
+            projects = Project.objects.all().order_by('-id')
+            context = {
+                'projects': projects
+            }
+            print("PROJECTS--->>>",projects)
+            return render(request, template_name, context)
+    except Exception as e:
+        print("EERROOR LOG",e)
+
+
+def researchPage(request):
+    try:
+
+        template_name = 'projects/projects_page.html'
+        if request.method == 'GET':
+            projects = Research.objects.all().order_by('-id')
+            context = {
+                'projects': projects
+            }
+            print("PROJECTS--->>>",projects)
+            return render(request, template_name, context)
+    except Exception as e:
+        print("EERROOR LOG",e)
 
 
 def projectDetail(request, slug):
@@ -88,6 +116,14 @@ def projectDetail(request, slug):
     if request.method == 'GET':
         project = get_object_or_404(Project, slug=slug)
         return render(request, template_name, {'project': project})
+
+
+def researchDetail(request, slug):
+    template_name = 'projects/project_detail.html'
+    if request.method == 'GET':
+        project = get_object_or_404(Research, slug=slug)
+        return render(request, template_name, {'project': project})
+
 
 
 def search(request):

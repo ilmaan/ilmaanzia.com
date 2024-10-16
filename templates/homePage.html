@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container">
+    <div class="container-fluid" style="width: 90%;">
         <div class="row home ">
             <div class="col-lg-12 text-center my-auto">
 
@@ -10,11 +10,19 @@
                     Hey, I'm<br>
                     <span class="color-primary" id="animated-name"></span>
                 </div>
+                
                 <div class="row justify-content-center">
                     <div class="col-lg-6 text-center">
                         <p class="s-color mt-5">{{info.mini_about}}</p>
                     </div>
                 </div>
+                <!-- <img src={{info.avatar.url}} class="profile-pic" alt="Not found"> -->
+                <label for="profile-pic">
+                    <div class="profile-pic shadow" style="background-image: url('{% if info.avatar %}{{info.avatar.url}}{% else %}{% static 'img/default-avatar.svg' %}{% endif %}')">
+                        <i class="fa fa-camera change-pic" ></i>
+                        <span>Change Image</span>
+                    </div>
+                </label>
 
                 <div class="social-icons m-0 mt-3" style="justify-content: center;">
                     <a href="{{info.github}}" target="_blank">
@@ -23,15 +31,23 @@
                     <a href="{{info.linkedin}}" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="{{info.instagram}}" target="_blank">
+                    <!-- <a href="{{info.instagram}}" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="{{info.facebook}}" target="_blank">
                         <i class="fab fa-facebook-f"></i></i>
-                    </a>
+                    </a> -->
                     <a href="{{info.twitter}}" target="_blank">
-                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-google-scholar"></i>
                     </a>
+                    <!-- <a href="{{info.cv.url}}" target="_blank">{{info.cv.url}}</a>
+                        <i class="fab fa-google-scholar"></i>
+                    </a> -->
+                    <a href="{{info.cv.url}}" class="" target="_blank" >
+                        <i class="fa-solid fa-file"></i> 
+                        
+                    </a>
+                    
                 </div>
                 {% include 'nav.html' %}
             </div>
@@ -53,6 +69,9 @@
 
         <!-- Projects -->
         {% include 'projects.html' %}
+
+        <!-- RESEARCH
+        {% include 'research.html' %} -->
 
         <!-- About and Contact -->
         {% include 'about_and_contact.html'%}

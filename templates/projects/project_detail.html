@@ -30,10 +30,17 @@
                     <i class="fab fa-github"></i>
                     Source Code On Github
                 </a>
-                <a href="{{project.demo}}" class="preview-btn">
+                {% if project.file.url %}
+                <a href="{{project.file.url}}" class="preview-btn">
                     <i class="fas fa-globe"></i> 
-                    Site Web On Live
+                    View Research Paper
                 </a>
+                    {% else %}
+                    <a href="{{project.demo}}" class="preview-btn">
+                        <i class="fas fa-globe"></i> 
+                        Site Web On Live
+                    </a>
+                    {% endif %}
             </div>
         </div>
     </div>

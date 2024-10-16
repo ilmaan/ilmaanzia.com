@@ -1,4 +1,4 @@
-from decouple import config
+# from decouple import config
 import dj_database_url
 
 import os
@@ -11,10 +11,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'oiw0(yy_a7b7_1fk$w7wim-$7)2pw6ak#wsbx@r!s9yy6g^jdi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,19 +87,27 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 if not DEBUG:
     # Database
     # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+    # DATABASES = {
+    #     'default': dj_database_url.config(
+    #         default=
+    #         # default=config('DATABASE_URL')
+    #     )
+    # }
     DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
     
     # Storage settings
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': config('CLOUD_NAME', default=''),
-        'API_KEY': config('API_KEY', default=''),
-        'API_SECRET': config('API_SECRET', default=''),
-    }
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    # CLOUDINARY_STORAGE = {
+    #     'CLOUD_NAME': config('CLOUD_NAME', default=''),
+    #     'API_KEY': config('API_KEY', default=''),
+    #     'API_SECRET': config('API_SECRET', default=''),
+    # }
+    # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 else:
     DATABASES = {
@@ -112,8 +122,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
 
 
@@ -154,7 +164,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -162,5 +172,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'portfolio/static/'),
 )
 
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

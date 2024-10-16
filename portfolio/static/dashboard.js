@@ -26,13 +26,18 @@ if (saveProfileEdit) {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log(data)
+			console.log("NEW DATA ",data)
 			if (data.success == true) {
 				document.querySelector('#change-success').click();
 				setTimeout(() => {  location.reload(); }, 3000);
 			} else {
-				document.querySelector('#form-errors').innerHTML = "* Something's wrong, please check your information!";
+				document.querySelector('#form-errors').innerHTML = "* Something's  minor wrong, please check your information!";
 			}
+		})
+		.catch(error => {
+			// Log any error that occurs during fetch
+			console.error('There was a problem with the fetch operation:', error);
+			document.querySelector('#form-errors').innerHTML = "* An error occurred, please try again.";
 		});
 	});
 }

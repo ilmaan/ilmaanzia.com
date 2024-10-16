@@ -6,6 +6,8 @@ from .views import (
     projectDetail,
     search,
     handler404,
+    researchPage,
+    researchDetail
 )
 
 from django.conf import settings
@@ -18,10 +20,12 @@ urlpatterns = [
 
     path('', homePage, name='homePage'),
     path('projects/', projectsPage, name='projectsPage'),
+    path('researchs/', researchPage, name='researchPage'),
     path('projects/<str:slug>/', projectDetail, name='projectDetail'),
+    path('research/<str:slug>/', researchDetail, name='researchDetail'),
     path('search/', search, name='search'),
 
     path('dashboard/', include('dashboard.urls')),
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

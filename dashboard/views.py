@@ -79,6 +79,7 @@ def profile_edit(request):
             if form.is_valid():
                 form.save()
                 return JsonResponse({'success': True})
+            print("FORM ERROR",form.errors)
             return JsonResponse({'success': False, 'errors': form.errors})
     return JsonResponse({'status':'bad request'})
 
