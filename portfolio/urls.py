@@ -7,7 +7,8 @@ from .views import (
     search,
     handler404,
     researchPage,
-    researchDetail
+    researchDetail,
+    vcard
 )
 
 from django.conf import settings
@@ -24,6 +25,7 @@ urlpatterns = [
     path('projects/<str:slug>/', projectDetail, name='projectDetail'),
     path('research/<str:slug>/', researchDetail, name='researchDetail'),
     path('search/', search, name='search'),
+    path('vcard/', vcard, name='vcard'),
 
     path('dashboard/', include('dashboard.urls')),
     path('admin/', admin.site.urls),

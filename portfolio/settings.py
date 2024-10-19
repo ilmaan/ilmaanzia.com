@@ -18,7 +18,8 @@ SECRET_KEY = 'oiw0(yy_a7b7_1fk$w7wim-$7)2pw6ak#wsbx@r!s9yy6g^jdi'
 # DEBUG = config('DEBUG', default=False, cast=bool)
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ilmaan.pythonanywhere.com','https://ilmaan.pythonanywhere.com']
 
 CORS_ORIGIN_ALLOW_ALL = True # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ALLOW_CREDENTIALS = True

@@ -154,3 +154,27 @@ def test404(request):
     return render(request, 'errors/404.html')
 
 
+
+def vcard(request):
+    try:
+        form = MessageForm()
+        competences = Competence.objects.all().order_by('id')
+        education = Education.objects.all().order_by('-id')
+        experiences = Experience.objects.all().order_by('-id')
+        projects = Project.objects.filter(show_in_slider=True).order_by('-id')
+        researchs = Research.objects.filter(show_in_slider=True).order_by('-id')
+        info = Information.objects.first()
+        context = {
+            'info': info,
+            'competences': competences,
+            'education': education,
+            'experiences': experiences,
+            'projects': projects,
+            'projects': projects,
+            'form': form,
+            'researchs': researchs,
+            # 'recaptcha_key': config("recaptcha_site_key", default="")
+        }
+        return render (request, 'vcard.html' ,{"context":context})
+    except Exception as e:
+        print("ECXEPTION",e)
